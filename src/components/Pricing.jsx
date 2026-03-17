@@ -30,7 +30,7 @@ const plans = [
   {
     name: 'Pro',
     icon: Zap,
-    price: '$1299',
+    price: '$599',
     period: 'per month',
     description: 'For growing teams that need more power and control.',
     bg: 'bg-brand-50',
