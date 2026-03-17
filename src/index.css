@@ -1,0 +1,209 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * { box-sizing: border-box; }
+
+  .no-transition * {
+    transition-property: color, background-color, border-color, fill, stroke !important;
+    transition-duration: 0s !important;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-white text-gray-900 font-sans;
+    overflow-x: hidden;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  ::selection { @apply bg-brand-100 text-brand-700; }
+}
+
+/* ─── Dark mode — single source of truth ─── */
+html.dark {
+  color-scheme: dark;
+}
+
+html.dark body {
+  background-color: #030712;
+  color: #f1f5f9;
+}
+
+html.dark section {
+  background-color: #030712 !important;
+}
+
+/* Alternate sections that use gray-50 bg */
+html.dark section.bg-gray-50\/50,
+html.dark section.section-alt {
+  background-color: #0f172a !important;
+}
+
+html.dark footer {
+  background-color: #020617 !important;
+}
+
+/* Cards */
+html.dark .card-bg {
+  background-color: #1e293b !important;
+  border-color: #334155 !important;
+}
+
+/* All white backgrounds inside dark mode */
+html.dark [class*="bg-white"]:not(.keep-white) {
+  background-color: #1e293b !important;
+}
+
+/* Borders */
+html.dark [class*="border-gray-100"],
+html.dark [class*="border-gray-200"] {
+  border-color: #334155 !important;
+}
+
+/* Headings */
+html.dark h1, html.dark h2, html.dark h3, html.dark h4 {
+  color: #f1f5f9;
+}
+
+/* Body text */
+html.dark p,
+html.dark span:not([class*="text-brand"]):not([class*="text-accent"]):not([class*="text-white"]):not([class*="text-amber"]):not([class*="text-green"]):not([class*="text-red"]):not([class*="text-gray-900"]) {
+  color: #94a3b8;
+}
+
+/* Nav links */
+html.dark nav a,
+html.dark .nav-link {
+  color: #cbd5e1;
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-brand-600 via-accent-500 to-brand-500;
+    background-size: 200% auto;
+    animation: gradient 6s ease infinite;
+  }
+
+  .text-gradient-static {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-brand-600 to-accent-500;
+  }
+
+  .glass {
+    @apply bg-white/70 backdrop-blur-xl border border-white/60;
+  }
+
+  .glass-dark {
+    @apply bg-gray-900/80 backdrop-blur-xl border border-white/10;
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar { display: none; }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes gradient {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.shimmer-text {
+  background: linear-gradient(90deg, #6172f3 0%, #a78bfa 25%, #6172f3 50%, #a78bfa 75%, #6172f3 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 3s linear infinite;
+}
+
+.noise::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-brand-600 via-accent-500 to-brand-500;
+    background-size: 200% auto;
+    animation: gradient 6s ease infinite;
+  }
+
+  .text-gradient-static {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-brand-600 to-accent-500;
+  }
+
+  .glass {
+    @apply bg-white/70 backdrop-blur-xl border border-white/60;
+  }
+
+  .glass-dark {
+    @apply bg-gray-900/80 backdrop-blur-xl border border-white/10;
+  }
+
+  .noise {
+    position: relative;
+  }
+
+  .noise::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .shimmer-text {
+    background: linear-gradient(90deg, #6172f3 0%, #a78bfa 25%, #6172f3 50%, #a78bfa 75%, #6172f3 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: shimmer 3s linear infinite;
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes gradient {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
