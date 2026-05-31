@@ -42,7 +42,7 @@ const footerSections = {
   },
   Support: {
     links: [
-      { label: 'Documentation', expandable: true, content: 'Full documentation is in progress. For now, the app is intuitive enough to use without a guide. Create an account, start an Assembly, and share the code with anyone.' },
+      { label: 'Documentation', href: 'https://drive.google.com/file/d/1MN80dLOlc3gNwFLxL5cckHoDGFBIx1zL/view?usp=sharing', external: true },
       { label: 'FAQ', href: '#faq' },
       { label: 'Status', expandable: true, content: 'Confera is hosted on Vercel (frontend) and a Node.js server (backend). The service is monitored 24/7. If you experience issues, please reach out via the contact page.' },
       { label: 'Contact', href: CONTACT_URL, external: true },
